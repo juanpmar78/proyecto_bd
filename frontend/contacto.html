@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — Mi Tienda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="contenedor nav-contenido">
+      <a href="index.html" class="logo">Mi<strong>Tienda</strong></a>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <div class="encabezado-principal">
+      <h1>Contáctanos</h1>
+      <p>Envíanos un mensaje y lo guardaremos en la base de datos</p>
+    </div>
+
+    <div class="panel-tienda">
+      <!-- formulario -->
+      <section class="tarjeta">
+        <h2>Enviar mensaje</h2>
+
+        <form id="formularioContacto">
+          <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ej: Juan Pérez" maxlength="100" required />
+          </div>
+
+          <div class="campo">
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" placeholder="Ej: juan@correo.com" maxlength="150" required />
+          </div>
+
+          <div class="campo">
+            <label for="asunto">Asunto:</label>
+            <input type="text" id="asunto" placeholder="Ej: Consulta sobre un producto" maxlength="150" required />
+          </div>
+
+          <div class="campo">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+          </div>
+
+          <div class="acciones-form">
+            <button type="submit" class="btn btn-guardar">Enviar mensaje</button>
+          </div>
+          <p id="estadoFormulario" class="estado-form" role="status"></p>
+        </form>
+      </section>
+
+      <!-- lista de mensajes -->
+      <section class="tarjeta">
+        <h2>Mensajes recibidos</h2>
+        <div id="listaMensajes" class="lista-mensajes"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="contenedor footer-contenido">
+      <p>&copy; 2026 Mi Tienda — Proyecto Formativo con Node.js, Express y MySQL.</p>
+    </div>
+  </footer>
+
+  <script src="contacto.js"></script>
+</body>
+
+</html>

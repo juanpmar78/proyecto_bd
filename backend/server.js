@@ -79,6 +79,57 @@ app.delete("/productos/:id", (req, res) => {
   });
 });
 
+//contacto
+app.get("/contactos", (req, res) => {
+  const sql = "select * from contactos order by fecha DESC, id DESC";
+
+  conexion.query(sql, (error, resultados) => {
+    if (error) {
+      console.error("Error al consultar contactos:", error);
+      return res.status(500).json({ mensaje: "Error al consultar los mensajes" });
+    }
+    res.json(resultados);
+  });
+});
+
+app.post("/contactos", (req, res) => {
+  const { nombre, correo, asunto, mensaje } = req.body;
+
+  if (!nombre || !correo || !asunto || !mensaje) {
+    return res.status(400).json({ mensaje: "Todos los campos son obligatorios" });
+  }
+
+  const sql =
+    "insert into contactos (nombre, correo, asunto, mensaje, fecha) VALUES (?, ?, ?, ?, NOW())";
+  const valores = [nombre.trim(), correo.trim(), asunto.trim(), mensaje.trim()];
+
+  conexion.query(sql, valores, (error, resultado) => {
+    if (error) {
+      console.error("Error al guardar contacto:", error);
+      return res.status(500).json({ mensaje: "Error al guardar el mensaje" });
+    }
+    res.status(201).json({
+      mensaje: "Mensaje enviado correctamente",
+      id: resultado.insertId,
+    });
+  });
+});
+
+app.delete("/contactos/:id", (req, res) => {
+  const sql = "delete from contactos where id = ?";
+
+  conexion.query(sql, [req.params.id], (error, resultado) => {
+    if (error) {
+      console.error("Error al eliminar contacto:", error);
+      return res.status(500).json({ mensaje: "Error al eliminar el mensaje" });
+    }
+    if (resultado.affectedRows === 0) {
+      return res.status(404).json({ mensaje: "El mensaje no existe" });
+    }
+    res.json({ mensaje: "Mensaje eliminado correctamente" });
+  });
+});
+
 // Iniciar servidor en el puerto 3000
 app.listen(3000, () => {
   console.log(" Servidor ejecutándose en http://localhost:3000");

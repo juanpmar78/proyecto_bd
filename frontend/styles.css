@@ -1,6 +1,17 @@
-/* =========================================================
-   estilos.css — Estilos para Mi Tienda
-   ========================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+
+:root {
+    --fondo: #0d1117;
+    --superficie: #161b22;
+    --superficie-2: #1c232d;
+    --borde: #2d3640;
+    --texto: #e6edf3;
+    --texto-suave: #8b98a5;
+    --acento: #34d399;
+    --acento-hover: #6ee7b7;
+    --peligro: #f87171;
+}
 
 * {
     margin: 0;
@@ -9,9 +20,9 @@
 }
 
 body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f1f5f9;
-    color: #1e293b;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -25,10 +36,10 @@ body {
     padding: 0 20px;
 }
 
-/* --- Barra de Navegación (Navbar) --- */
+/* --- Barra de navegación --- */
 .navbar {
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: var(--superficie);
+    border-bottom: 1px solid var(--borde);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -38,87 +49,88 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 65px;
+    height: 64px;
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
     text-decoration: none;
-    color: #1e293b;
+    color: var(--texto);
 }
 
 .logo strong {
-    color: #2563eb;
+    color: var(--acento);
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 8px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #64748b;
+    color: var(--texto-suave);
     font-weight: 500;
-    transition: color 0.2s;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: color 0.2s, background-color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #2563eb;
+    color: var(--texto);
+    background-color: var(--superficie-2);
 }
 
-/* --- Contenido Principal --- */
-main {
+/* --- Contenido principal --- */
+main.contenedor {
     flex: 1;
-    padding: 40px 20px;
+    padding-top: 44px;
+    padding-bottom: 50px;
 }
 
 .encabezado-principal {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 36px;
 }
 
 .encabezado-principal h1 {
     font-size: 2rem;
-    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
 }
 
 .encabezado-principal p {
-    color: #64748b;
-    font-size: 1rem;
+    color: var(--texto-suave);
 }
 
-/* --- Layout del Panel (Formulario + Lista) --- */
+/* --- Layout: formulario + lista --- */
 .panel-tienda {
     display: grid;
     grid-template-columns: 360px 1fr;
-    gap: 25px;
+    gap: 24px;
     align-items: start;
-    margin-bottom: 35px;
 }
 
-/* Tarjeta contenedora blanca */
 .tarjeta {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    padding: 24px;
 }
 
 .tarjeta h2 {
-    font-size: 1.25rem;
-    color: #1e293b;
+    font-size: 1.15rem;
+    font-weight: 600;
     margin-bottom: 18px;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 8px;
 }
 
-/* --- Formulario --- */
+/* --- Formularios --- */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
 }
 
 .campo {
@@ -128,9 +140,9 @@ form {
 }
 
 label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--texto-suave);
 }
 
 input,
@@ -138,28 +150,56 @@ textarea {
     font-family: inherit;
     font-size: 0.95rem;
     padding: 10px 12px;
-    border: 1px solid #cbd5e1;
+    background-color: var(--fondo);
+    color: var(--texto);
+    border: 1px solid var(--borde);
     border-radius: 8px;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input:focus,
-textarea:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+input::placeholder,
+textarea::placeholder {
+    color: #55616e;
 }
 
-/* Botones */
+input:focus,
+textarea:focus {
+    border-color: var(--acento);
+    box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.estado-form {
+    font-size: 0.9rem;
+    color: var(--acento);
+    min-height: 1.2em;
+}
+
+.estado-form.error {
+    color: var(--peligro);
+}
+
+/* --- Botones --- */
 .btn {
-    padding: 12px;
+    padding: 11px 18px;
     font-family: inherit;
     font-size: 0.95rem;
     font-weight: 600;
-    border: none;
+    border: 1px solid var(--borde);
     border-radius: 8px;
+    background-color: var(--superficie-2);
+    color: var(--texto);
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    background-color: var(--borde);
 }
 
 .btn:active {
@@ -173,66 +213,58 @@ textarea:focus {
 
 .btn-guardar {
     flex: 1;
-    background-color: #2563eb;
-    color: #ffffff;
+    background-color: var(--acento);
+    border-color: var(--acento);
+    color: #06281b;
 }
 
 .btn-guardar:hover {
-    background-color: #1d4ed8;
-}
-
-.btn-cancelar {
-    background-color: #e2e8f0;
-    color: #475569;
-}
-
-.btn-cancelar:hover {
-    background-color: #cbd5e1;
+    background-color: var(--acento-hover);
+    border-color: var(--acento-hover);
 }
 
 .btn-contacto {
-    background-color: #0f172a;
-    color: #ffffff;
     align-self: flex-start;
-    padding: 10px 24px;
 }
 
-.btn-contacto:hover {
-    background-color: #334155;
-}
-
-/* --- Tarjetas de Producto --- */
+/* --- Tarjetas de producto --- */
 .lista-productos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 15px;
+    gap: 16px;
 }
 
 .producto {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
+    background-color: var(--superficie-2);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
     padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 12px;
+    gap: 14px;
+    transition: border-color 0.2s;
+}
+
+.producto:hover {
+    border-color: var(--acento);
 }
 
 .producto h3 {
     font-size: 1.05rem;
-    color: #0f172a;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
 .producto p {
     font-size: 0.9rem;
-    color: #64748b;
+    color: var(--texto-suave);
 }
 
-.producto-precio {
+.producto .producto-precio {
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #2563eb;
-    font-size: 1.1rem !important;
+    color: var(--acento);
 }
 
 .acciones {
@@ -243,57 +275,113 @@ textarea:focus {
 .acciones button {
     flex: 1;
     padding: 8px;
+    font-family: inherit;
     font-size: 0.85rem;
     font-weight: 600;
-    border: none;
-    border-radius: 6px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--texto);
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
-.btn-editar {
-    background-color: #e2e8f0;
-    color: #334155;
+.acciones button:hover {
+    background-color: var(--borde);
 }
 
 .btn-editar:hover {
-    background-color: #cbd5e1;
+    border-color: var(--acento) !important;
 }
 
 .btn-eliminar {
-    background-color: #fee2e2;
-    color: #dc2626;
+    color: var(--peligro) !important;
 }
 
 .btn-eliminar:hover {
-    background-color: #fca5a5;
+    background-color: rgba(248, 113, 113, 0.12) !important;
+    border-color: var(--peligro) !important;
 }
 
-/* --- Sección Contacto --- */
-.seccion-contacto {
-    margin-top: 10px;
+/* --- Página de contacto: mensajes recibidos --- */
+.lista-mensajes {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
-.subtitulo-contacto {
-    color: #64748b;
+.mensaje {
+    background-color: var(--superficie-2);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mensaje-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.mensaje-cabecera h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.mensaje-fecha {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+.mensaje-remitente {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--acento);
+    word-break: break-word;
+}
+
+.mensaje-texto {
+    font-size: 0.92rem;
+    color: #c4cdd6;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mensaje .acciones {
+    justify-content: flex-end;
+}
+
+.mensaje .acciones button {
+    flex: 0 0 auto;
+    padding: 7px 16px;
+}
+
+.vacio {
+    color: var(--texto-suave);
     font-size: 0.9rem;
-    margin-bottom: 15px;
 }
 
-.fila-contacto {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-/* --- Pie de Página (Footer) --- */
+/* --- Pie de página --- */
 .footer {
-    background-color: #0f172a;
-    color: #94a3b8;
+    background-color: var(--superficie);
+    border-top: 1px solid var(--borde);
+    color: var(--texto-suave);
     padding: 20px 0;
     margin-top: auto;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+}
+
+/* --- Accesibilidad --- */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
 }
 
 /* --- Responsive --- */
@@ -306,7 +394,8 @@ textarea:focus {
         grid-template-columns: 1fr;
     }
 
-    .nav-links {
-        display: none;
+    .nav-links a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
     }
 }
