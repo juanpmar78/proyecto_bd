@@ -93,7 +93,7 @@ app.post("/contactos", (req, res) => {
     return res.status(400).json({ mensaje: "Todos los campos son obligatorios" });
   }
 
-  const sql = "INSERT contactos (nombre, correo, asunto, mensaje) VALUES (?, ?, ?, ?)";
+  const sql = "INSERT INTO contactos (nombre, correo, asunto, mensaje) VALUES (?, ?, ?, ?)";
   const valores = [nombre, correo, asunto, mensaje];
 
   conexion.query(sql, valores, (error, resultado) => {
