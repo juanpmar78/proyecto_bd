@@ -111,7 +111,7 @@ app.post("/contactos", (req, res) => {
 
 // 6. Consultar todos los mensajes de contacto (GET)
 app.get("/contactos", (req, res) => {
-  const sql = "SELECT * FROM contactos ORDER BY fecha_registro DESC";
+  const sql = "SELECT * FROM contactos ORDER BY fecha DESC";
 
   conexion.query(sql, (error, resultados) => {
     if (error) {
