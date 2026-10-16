@@ -94,7 +94,7 @@ app.post("/contactos", (req, res) => {
   }
 
   // CAMBIO: la tabla se llama "contacto" (antes: mensajes_contacto)
-  const sql = "INSERT INTO contacto (nombre, correo, asunto, mensaje) VALUES (?, ?, ?, ?)";
+  const sql = "INSERT INTO contactos (nombre, correo, asunto, mensaje) VALUES (?, ?, ?, ?)";
   const valores = [nombre, correo, asunto, mensaje];
 
   conexion.query(sql, valores, (error, resultado) => {
@@ -113,7 +113,7 @@ app.post("/contactos", (req, res) => {
 // 6. Consultar todos los mensajes de contacto (GET)
 app.get("/contactos", (req, res) => {
   // CAMBIO: tabla "contacto" y columna "fecha" (antes: mensajes_contacto / fecha_registro)
-  const sql = "SELECT * FROM contacto ORDER BY fecha DESC";
+  const sql = "SELECT * FROM contactos ORDER BY fecha DESC";
 
   conexion.query(sql, (error, resultados) => {
     if (error) {
@@ -128,7 +128,7 @@ app.get("/contactos", (req, res) => {
 app.delete("/contactos/:id", (req, res) => {
   const id = req.params.id;
   // CAMBIO: tabla "contacto" (antes: mensajes_contacto)
-  const sql = "DELETE FROM contacto WHERE id = ?";
+  const sql = "DELETE FROM contactos WHERE id = ?";
 
   conexion.query(sql, [id], (error, resultado) => {
     if (error) {
