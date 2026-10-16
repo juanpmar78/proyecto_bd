@@ -85,7 +85,7 @@ app.delete("/productos/:id", (req, res) => {
 // ==========================================
 
 // 5. Registrar un nuevo mensaje de contacto (POST)
-app.post("/contactos", (req, res) => {
+app.post("/contacto", (req, res) => {
   const { nombre, email, asunto, mensaje } = req.body;
 
   // Validación básica de campos requeridos
