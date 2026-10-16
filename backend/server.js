@@ -85,7 +85,7 @@ app.delete("/productos/:id", (req, res) => {
 // ==========================================
 
 // 5. Registrar un nuevo mensaje de contacto (POST)
-app.post("/contacto", (req, res) => {
+app.post("/contactos", (req, res) => {
   const { nombre, email, asunto, mensaje } = req.body;
 
   // Validación básica de campos requeridos
@@ -93,7 +93,7 @@ app.post("/contacto", (req, res) => {
     return res.status(400).json({ mensaje: "Todos los campos son obligatorios" });
   }
 
-  const sql = "INSERT INTO mensajes_contacto (nombre, email, asunto, mensaje) VALUES (?, ?, ?, ?)";
+  const sql = "INSERT contactos (nombre, email, asunto, mensaje) VALUES (?, ?, ?, ?)";
   const valores = [nombre, email, asunto, mensaje];
 
   conexion.query(sql, valores, (error, resultado) => {
@@ -111,7 +111,7 @@ app.post("/contacto", (req, res) => {
 
 // 6. Consultar todos los mensajes de contacto (GET)
 app.get("/contacto", (req, res) => {
-  const sql = "SELECT * FROM mensajes_contacto ORDER BY fecha_registro DESC";
+  const sql = "SELECT * FROM contactos ORDER BY fecha_registro DESC";
 
   conexion.query(sql, (error, resultados) => {
     if (error) {
@@ -125,7 +125,7 @@ app.get("/contacto", (req, res) => {
 // 7. Eliminar un mensaje de contacto (DELETE)
 app.delete("/contacto/:id", (req, res) => {
   const id = req.params.id;
-  const sql = "DELETE FROM mensajes_contacto WHERE id = ?";
+  const sql = "DELETE FROM contactos WHERE id = ?";
 
   conexion.query(sql, [id], (error, resultado) => {
     if (error) {
