@@ -85,7 +85,7 @@ app.delete("/productos/:id", (req, res) => {
 // ==========================================
 
 // 5. Registrar un nuevo mensaje de contacto (POST)
-app.post("/contacto", (req, res) => {
+app.post("/contactos", (req, res) => {
   const { nombre, correo, asunto, mensaje } = req.body;
 
   // Validación básica de campos requeridos
@@ -110,7 +110,7 @@ app.post("/contacto", (req, res) => {
 });
 
 // 6. Consultar todos los mensajes de contacto (GET)
-app.get("/contacto", (req, res) => {
+app.get("/contactos", (req, res) => {
   const sql = "SELECT * FROM contactos ORDER BY fecha_registro DESC";
 
   conexion.query(sql, (error, resultados) => {
@@ -123,7 +123,7 @@ app.get("/contacto", (req, res) => {
 });
 
 // 7. Eliminar un mensaje de contacto (DELETE)
-app.delete("/contacto/:id", (req, res) => {
+app.delete("/contactos/:id", (req, res) => {
   const id = req.params.id;
   const sql = "DELETE FROM contactos WHERE id = ?";
 
