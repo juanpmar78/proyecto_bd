@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio — Mi Tienda</title>
+
+  <!-- Fuente: Inter (la misma que usa styles.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- ===== BARRA DE NAVEGACIÓN (NAVBAR) ===== -->
+  <header class="navbar">
+    <div class="contenedor nav-contenido">
+      <a href="inicio.html" class="logo">Mi<strong>Tienda</strong></a>
+      <nav class="nav-links">
+        <a href="inicio.html">Inicio</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main class="contenedor" id="inicio">
+
+    <!-- INICIO: presentación de la tienda -->
+    <section class="hero">
+      <h1>Tu inventario, siempre al día</h1>
+      <p class="hero-texto">
+        Registra productos, ajusta precios y controla el stock desde un solo lugar.
+        Los cambios se guardan al instante en la base de datos.
+      </p>
+
+      <div class="hero-acciones">
+        <a href="index.html" class="btn btn-guardar">Administrar productos</a>
+        <a href="contacto.html" class="btn">Contáctanos</a>
+      </div>
+
+      <!-- Resumen en vivo: lo llena inicio.js con los datos de la API -->
+      <dl class="hero-datos">
+        <div>
+          <dt>Productos</dt>
+          <dd id="heroProductos">–</dd>
+        </div>
+        <div>
+          <dt>Unidades en stock</dt>
+          <dd id="heroUnidades">–</dd>
+        </div>
+        <div>
+          <dt>Valor del inventario</dt>
+          <dd id="heroValor">–</dd>
+        </div>
+      </dl>
+    </section>
+  </main>
+
+  <!-- ===== PIE DE PÁGINA (FOOTER) ===== -->
+  <footer class="footer">
+    <div class="contenedor footer-contenido">
+      <p>&copy; 2026 Mi Tienda — Proyecto Formativo con Node.js, Express y MySQL.</p>
+    </div>
+  </footer>
+
+  <script src="inicio.js"></script>
+</body>
+
+</html>

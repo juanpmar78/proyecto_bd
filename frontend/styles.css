@@ -398,4 +398,77 @@ button:focus-visible {
         padding: 6px 10px;
         font-size: 0.9rem;
     }
+
+    .hero {
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+    }
+
+    .hero-datos {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Inicio (hero) --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+.hero {
+    max-width: 760px;
+    padding-bottom: 44px;
+    margin-bottom: 44px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+}
+
+.hero-texto {
+    max-width: 54ch;
+    font-size: 1.05rem;
+    color: var(--texto-suave);
+    margin-bottom: 28px;
+}
+
+.hero-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+.hero-acciones .btn {
+    flex: 0 0 auto;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.hero-datos {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 12px 40px;
+}
+
+.hero-datos div {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.hero-datos dt {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+.hero-datos dd {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
